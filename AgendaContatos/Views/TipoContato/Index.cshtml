@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AgendaContatos.Models.TipoContatoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listagem</h2>
+
+<p>
+    @Html.ActionLink("Novo", "Novo")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.Codigo }) |
+            @Html.ActionLink("Apagar", "Apagar", new { id=item.Codigo })
+        </td>
+    </tr>
+}
+
+</table>
